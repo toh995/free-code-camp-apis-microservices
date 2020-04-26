@@ -1,0 +1,23 @@
+{
+  "name": "free-code-camp-apis-microservices",
+  "version": "1.0.0",
+  "description": "Final projects for the 'APIs and Microservices' certificate from Free Code Camp",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toh995/free-code-camp-apis-microservices.git"
+  },
+  "author": "toh995",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toh995/free-code-camp-apis-microservices/issues"
+  },
+  "homepage": "https://github.com/toh995/free-code-camp-apis-microservices#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
