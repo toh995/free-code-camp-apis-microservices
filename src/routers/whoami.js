@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/whoami", (req, res) => {
+router.get("/", (req, res) => {
     const retObj = {
         ipaddress: req.ip,
         language: req.headers["accept-language"],
