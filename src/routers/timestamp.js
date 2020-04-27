@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Helpers = require("/src/helpers/helpers");
 
-router.get("/timestamp/:date_string?", (req, res) => {
+router.get("/:date_string?", (req, res) => {
     let { date_string } = req.params;
 
     // Convert date_string to a number, if appropriate
