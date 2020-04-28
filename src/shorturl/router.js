@@ -1,7 +1,7 @@
 const express = require("express");
 const lodash = require("lodash");
-const Url = require("/src/models/url");
-const Helpers = require("/src/helpers/helpers");
+const Url = require("./models/url");
+const Helpers = require("/helpers");
 
 const router = express.Router();
 
