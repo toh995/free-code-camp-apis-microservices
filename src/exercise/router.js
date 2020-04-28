@@ -30,7 +30,7 @@ router.get("/users", async (req, res, next) => {
         return;
     }
 
-    if (!user) {
+    if (!users) {
         const err = new Error("Could not find users!");
         next(err);
         return;
