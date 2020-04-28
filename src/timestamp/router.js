@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Helpers = require("/src/helpers/helpers");
+const Helpers = require("/helpers");
 
 router.get("/:date_string?", (req, res) => {
     let { date_string } = req.params;

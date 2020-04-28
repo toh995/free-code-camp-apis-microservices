@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Exercise Tracker | Free Code Camp</title>
+   <link rel="shortcut icon"
+      href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico"
+      type="image/x-icon" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+   <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+   <div class="container">
+      <h1>Exercise tracker</h1>
+      <form action="/api/exercise/new-user" method="post">
+         <h3>Create a New User</h3>
+         <p><code>POST /api/exercise/new-user</code></p>
+         <input id="uname" type="text" name="username" placeholder="username">
+         <input type="submit" value="Submit">
+      </form>
+      <form action="/api/exercise/add" method="post">
+         <h3>Add exercises</h3>
+         <p><code>POST /api/exercise/add</code></p>
+         <input id="uid" type="text" name="userId" placeholder="userId*" required>
+         <input id="desc" type="text" name="description" placeholder="description*" required>
+         <input id="dur" type="number" name="duration" placeholder="duration* (mins.)" required min="0">
+         <input id="dat" type="date" name="date" placeholder="date (yyyy-mm-dd)">
+         <input type="submit" value="Submit">
+      </form>
+      <p><strong>GET users's exercise log:
+         </strong><code>GET /api/exercise/log?{userId}[&amp;from][&amp;to][&amp;limit]</code></p>
+      <p><strong>{ }</strong> = required, <strong>[ ]</strong> = optional</p>
+      <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+   </div>
+
+   <div class="container" style="margin-top: 3em;">
+      <h3>User Story:</h3>
+      <ol>
+         <li>I can create a user by posting form data username to <code>/api/exercise/new-user</code> and returned will
+            be an object with <code>username</code> and <code>_id</code>.
+         </li>
+         <li>I can get an array of all users by getting <code>/api/exercise/users</code> with the same info as when
+            creating a user.
+         </li>
+         <li>I can add an exercise to any user by posting form data <code>userId(_id)</code>, <code>description</code>,
+            <code>duration</code>, and optionally <code>date</code> to <code>/api/exercise/add</code>. If no date
+            supplied it will use current date. Returned will be the user object with also the exercise fields added.
+         </li>
+         <li>I can retrieve a full exercise log of any user by getting <code>/api/exercise/log</code> with a parameter
+            of <code>userId(_id)</code>. Return will be the user object with added array log and count (total exercise
+            count).
+         </li>
+         <li>I can retrieve part of the log of any user by also passing along optional parameters of <code>from</code> &
+            <code>to</code> or <code>limit</code>. (Date format <code>yyyy-mm-dd</code>, <code>limit = int</code>)
+         </li>
+      </ol>
+   </div>
+</body>
+
+</html>

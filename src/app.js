@@ -16,22 +16,38 @@ app.use(cors({ optionSuccessStatus: 200 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Mount API routers
-const timestampRouter = require("/src/routers/timestamp");
-const whoamiRouter = require("/src/routers/whoami");
-const shorturlRouter = require("/src/routers/shorturl");
-const exerciseRouter = require("/src/routers/exercise");
-const fileanalyseRouter = require("/src/routers/fileanalyse");
-
+// Configure routes
 const apiRouter = express.Router();
+const viewRouter = express.Router();
 
-apiRouter.use("/timestamp", timestampRouter);
-apiRouter.use("/whoami", whoamiRouter);
-apiRouter.use("/shorturl", shorturlRouter);
-apiRouter.use("/exercise", exerciseRouter);
-apiRouter.use("/fileanalyse", fileanalyseRouter);
+const paths = [
+    "/exercise",
+    "/fileanalyse",
+    "/shorturl",
+    "/whoami",
+    "/timestamp"
+];
 
+for (const path of paths) {
+    // Mount to apiRouter
+    const router = require(`.${path}/router`);
+    apiRouter.use(path, router);
+
+    // Mount to viewRouter
+    viewRouter.use(path, express.static(`${__dirname}${path}/public`));
+    viewRouter.get(path, (req, res) => {
+        res.sendFile(`${__dirname}${path}/views/index.html`);
+    });
+}
+
+// Mount homepage to viewRouter
+viewRouter.use("/", (req, res) => {
+    res.sendFile(`${__dirname}/home.html`);
+});
+
+// Mount apiRouter and viewRouter to the app
 app.use("/api", apiRouter);
+app.use("/", viewRouter);
 
 // Not found middleware
 app.use((req, res, next) => {
